@@ -171,5 +171,12 @@ def repsfun(inp_leftangle, inp_rightangle, inp_lowleftangle, inp_lowrightangle):
 
         cap.release()
         cv2.destroyAllWindows()
-    return [counter_right, counter_left, min_angle_left, min_angle_right, max_angle_left, max_angle_right]
+    if(counter_left==0 and counter_right==0):
+        return [counter_right, counter_left, 0, 0, max_angle_left, max_angle_right]
+    elif(counter_left==0):
+        return [counter_right, counter_left, 0, min_angle_right, max_angle_left, max_angle_right]
+    elif(counter_right==0):
+        return [counter_right, counter_left, min_angle_left, 0, max_angle_left, max_angle_right]
+    else:
+        return [counter_right, counter_left, min_angle_left, min_angle_right, max_angle_left, max_angle_right]
 

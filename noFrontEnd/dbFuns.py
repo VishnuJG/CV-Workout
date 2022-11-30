@@ -118,9 +118,14 @@ def dbUpdatefunsetting(inp_uname, update_key, update_val):
     cursor.execute(
         f"SELECT * FROM '{inp_uname}_stats' WHERE Date=?;", (tdate,))
     if(cursor.fetchone()):
-        cursor.execute(
-            f"UPDATE '{inp_uname}_stats' SET {update_key} =  ? WHERE Date = ?;", (update_val, tdate))
-        con.commit()
+        if("min" in update_key):
+            cursor.execute(
+                f"UPDATE '{inp_uname}_stats' SET {update_key} =  ? WHERE Date = ?;", (update_val, tdate))
+            con.commit()
+        elif("max" in update_key):
+            cursor.execute(
+                f"UPDATE '{inp_uname}_stats' SET {update_key} =  ? WHERE Date = ? AND {update_key}<?;", (update_val, tdate, update_val))
+            con.commit()
     else:
         cursor.execute(
             f"INSERT INTO '{inp_uname}_stats' VALUES(?,0,0,0,0,0,0,0,0,0,0,0,0);", (tdate,))
