@@ -40,7 +40,7 @@ def repsfun(inp_leftangle, inp_rightangle, inp_lowleftangle, inp_lowrightangle):
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
             
-            # blackie = np.zeros(image.shape)
+            blackie = np.zeros(image.shape)
 
             try:
                 landmarks = results.pose_landmarks.landmark
@@ -59,14 +59,14 @@ def repsfun(inp_leftangle, inp_rightangle, inp_lowleftangle, inp_lowrightangle):
                 angle_right = calculate_angle(shoulder_right, elbow_right, wrist_right)
                 
                 
-                # cv2.putText(blackie, str(angle_left), 
-                #             tuple(np.multiply(elbow_left, [640, 480]).astype(int)), 
-                #             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 150), 2, cv2.LINE_AA
-                #                     )
-                # cv2.putText(blackie, str(angle_right), 
-                #             tuple(np.multiply(elbow_right, [640, 480]).astype(int)), 
-                #             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 150), 2, cv2.LINE_AA
-                #                     )
+                cv2.putText(blackie, str(angle_left), 
+                            tuple(np.multiply(elbow_left, [640, 480]).astype(int)), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 150), 2, cv2.LINE_AA
+                                    )
+                cv2.putText(blackie, str(angle_right), 
+                            tuple(np.multiply(elbow_right, [640, 480]).astype(int)), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 150), 2, cv2.LINE_AA
+                                    )
                 
                 min_angle_left = min(round(angle_left), min_angle_left)
                 min_angle_right = min(round(angle_right), min_angle_right)
@@ -92,10 +92,10 @@ def repsfun(inp_leftangle, inp_rightangle, inp_lowleftangle, inp_lowrightangle):
                 pass
             
             
-            # mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-            #                         mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
-            #                         mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
-            #                         )   
+            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                     mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
+                                     mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
+                                     )   
             image=cv2.flip(image, 1)
             
             
@@ -156,12 +156,11 @@ def repsfun(inp_leftangle, inp_rightangle, inp_lowleftangle, inp_lowrightangle):
             
 
             
-            # mp_drawing.draw_landmarks(blackie, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-            #                         mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
-            #                         mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
-            #                         ) 
-            # blackie=cv2.flip(blackie, 1)
-            # h,w =image.shape[:2]
+            mp_drawing.draw_landmarks(blackie, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                    mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
+                                    mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
+                                    ) 
+            blackie=cv2.flip(blackie, 1)
             
             cv2.resize(image, (0, 0), fx=5, fy=5)
             cv2.imshow('Mediapipe Feed', image)

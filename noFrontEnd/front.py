@@ -73,6 +73,10 @@ def frontdef(vname):
                 if(res[0]>0 or res[1]>0):
                     dbUpdatefun(vname, "legcurls_left", res[1])
                     dbUpdatefun(vname, "legcurls_right", res[0])
+                dbUpdatefunsetting(vname, "legleft_minangle", res[2])
+                dbUpdatefunsetting(vname, "legright_minangle", res[3])
+                dbUpdatefunsetting(vname, "legleft_maxangle", res[4])
+                dbUpdatefunsetting(vname, "legright_maxangle", res[5])
                 window['-RES-'].update("Result : LEFT->"+str(res[1])+"\tRIGHT->"+str(res[0]), text_color="Green")
                 sg.Popup("Result : LEFT->"+str(res[1])+"\tRIGHT->"+str(res[0]), text_color="Green")
 

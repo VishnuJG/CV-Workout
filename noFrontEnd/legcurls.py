@@ -18,6 +18,12 @@ def legscurlfun(inp_leftangle, inp_rightangle, inp_lowleftangle, inp_lowrightang
     counter_right = 0
     stage_left = None
     stage_right = None
+    angle_left = 0
+    angle_right = 0
+    max_angle_left = 0
+    max_angle_right = 0
+    min_angle_left = 180
+    min_angle_right = 180
 
 
     with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
@@ -54,6 +60,11 @@ def legscurlfun(inp_leftangle, inp_rightangle, inp_lowleftangle, inp_lowrightang
                 
                 angle_left = calculate_angle(ankle_left, knee_left, hip_left)
                 angle_right = calculate_angle(ankle_right, knee_right, hip_right)
+
+                min_angle_left = min(round(angle_left), min_angle_left)
+                min_angle_right = min(round(angle_right), min_angle_right)
+                max_angle_left = max(round(angle_left), max_angle_left)
+                max_angle_right = max(round(angle_right), max_angle_right)
                 
                 image = cv2.flip(image, 1)
                 
@@ -158,11 +169,11 @@ def legscurlfun(inp_leftangle, inp_rightangle, inp_lowleftangle, inp_lowrightang
             blackie = cv2.flip(blackie, 1)
 
             cv2.imshow('Mediapipe Feed', image)
-            cv2.imshow('Blackie', blackie)
+            #cv2.imshow('Blackie', blackie)
 
             if cv2.waitKey(10) & 0xFF == ord('q'):
                 break
 
         cap.release()
         cv2.destroyAllWindows()
-    return [counter_right, counter_left]
+    return [counter_right, counter_left, min_angle_left, min_angle_right, max_angle_left, max_angle_right]
