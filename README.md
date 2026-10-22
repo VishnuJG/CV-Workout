@@ -42,3 +42,5 @@ python app.py
 ## Contribution
 Contributions are welcome! Please read the `CONTRIBUTING.md` file for guidelines.
 </pre>
+
+\n\n### Team Members:\n1. Tejas D R  (PES1UG19CS537)  - tejasdr01@gmail.com\n2. Vishnu J G  (PES1UG19CS574)  - jgvishnu2001@gmail.com\n3. Srujan A S  (PES1UG19CS509)  - srujan12077@gmail.com\n4. Pradeep V  (PES1UG19CS330)  - pradeepdeepu3303@gmail.com\n
