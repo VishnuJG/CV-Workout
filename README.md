@@ -6,4 +6,6 @@ Contributors:
 - Vishnu J G (PES1UG19CS574, jgvishnu2001@gmail.com)
 - Srujan A S (PES1UG19CS509, srujan12077@gmail.com)
 - Pradeep V (PES1UG19CS330, pradeepdeepu3303@gmail.com)
+
+This application is now mobile responsive, enhancing usability on smaller screens.
 </pre>
