@@ -3,7 +3,9 @@
 {% block title %} UI Gridsystem {% endblock %} 
 
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="/static/assets/css/custom-grid.css">
+{% endblock stylesheets %}
 
 {% block content %}
 
@@ -180,7 +182,6 @@
 					</div>
 
 					<h4 class="card-title">Mix and Match (Showing different sizes on different screens)</h4>
-					<!-- Stack the columns on mobile by making one full-width and the other half-width -->
 					<div class="row row-demo-grid">
 						<div class="col-12 col-md-8">
 							<div class="card">
@@ -194,7 +195,6 @@
 						</div>
 					</div>
 
-					<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 					<div class="row row-demo-grid">
 						<div class="col-sm-6 col-md-3">
 							<div class="card">
@@ -218,7 +218,6 @@
 						</div>
 					</div>
 
-					<!-- Columns are always 50% wide, on mobile and desktop -->
 					<div class="row row-demo-grid">
 						<div class="col-6">
 							<div class="card">
@@ -276,8 +275,8 @@
 							</div>
 						</div>
 					</div>
+					</div>
 				</div>
-			</div>
 		</div>
 	</div>
 
@@ -285,8 +284,5 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
-
-	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="/static/assets/js/setting-demo2.js"></script>
-
-{% endblock javascripts %}	
+{% endblock javascripts %}
